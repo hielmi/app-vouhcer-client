@@ -1,0 +1,44 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10vh;
+  background-color: var(--bg-color);
+  z-index: 999;
+
+  &__btn_nav {
+    display: flex;
+    gap: 10px;
+
+    a {
+      text-decoration: none;
+      color: var(--text-color);
+    }
+
+    &__dashboard {
+      background-color: var(--text-color);
+      a {
+        color: var(--bg-color);
+      }
+    }
+  }
+}
+
+@media (max-width: 765px) {
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 20px;
+
+    &__profile {
+      visibility: hidden;
+      background-color: red;
+    }
+    &__header {
+      visibility: hidden;
+      background-color: red;
+    }
+  }
+}

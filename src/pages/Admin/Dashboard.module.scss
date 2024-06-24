@@ -1,0 +1,25 @@
+.dashboard {
+  flex-grow: 1;
+  padding: 20px 60px;
+
+  h2 {
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    padding: 20px;
+    width: 300px;
+    border: 1px solid #cfcfcf;
+    background-color: #fff;
+    box-shadow: 10px 10px 10px #eee;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+
+    p {
+      font-size: 40px;
+    }
+  }
+}

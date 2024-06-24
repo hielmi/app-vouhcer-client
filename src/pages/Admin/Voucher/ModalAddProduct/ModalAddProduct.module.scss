@@ -1,0 +1,61 @@
+.form {
+  &__stock {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+
+    &__item {
+      width: 50%;
+      margin-bottom: -20px;
+      :nth-child(1) {
+        margin-top: 10px;
+      }
+      label {
+        font-size: 14px;
+      }
+    }
+
+    &__delete {
+      margin-top: 50px;
+      i {
+        cursor: pointer;
+        font-size: 24px;
+      }
+    }
+
+    &__button {
+      margin: 20px 0 30px 0;
+      padding: 10px !important;
+
+      i {
+        font-size: 24px;
+      }
+    }
+  }
+  &__upload {
+    display: flex;
+    gap: 1rem;
+    &__image {
+      width: 100px;
+      margin: 20px 0;
+    }
+    &__placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #eee;
+      border-radius: 8px;
+      width: 100px;
+      margin: 20px 0;
+      p {
+        text-align: center;
+        font-size: 12px;
+      }
+    }
+
+    &__input {
+      width: 100%;
+    }
+  }
+}
