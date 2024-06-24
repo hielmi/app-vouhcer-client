@@ -27,18 +27,34 @@ const ModalUpdateProduct = (props: PropTypes) => {
     setIsLoading(true);
 
     try {
-      const formData = new FormData(e.currentTarget);
+      const form: any = e.target as HTMLFormElement;
 
+      const updatedFields: any = {};
+
+      if (form.nama.value !== "" && form.nama.value !== voucher?.nama) {
+        updatedFields.nama = form.nama.value;
+      }
+      if (
+        form.kategori.value !== "" &&
+        form.kategori.value !== voucher?.kategori
+      ) {
+        updatedFields.kategori = form.kategori.value;
+      }
       if (uploadedImage) {
-        formData.append("foto", uploadedImage);
+        updatedFields.foto = uploadedImage;
       }
 
-      const response = await voucherServices.updateVoucherById(
+      const formData = new FormData();
+      for (const key in updatedFields) {
+        formData.append(key, updatedFields[key]);
+      }
+
+      const { data } = await voucherServices.updateVoucherById(
         String(voucher?.id),
         formData
       );
 
-      if (response.status === 200) {
+      if (data.status) {
         Swal.fire({
           icon: "success",
           title: "Success",
@@ -46,16 +62,10 @@ const ModalUpdateProduct = (props: PropTypes) => {
         });
         setVouchers((prevVouchers) =>
           prevVouchers.map((v) =>
-            v.id === voucher?.id ? { ...v, ...response.data.data[0] } : v
+            v.id === voucher?.id ? { ...v, ...data.data[0] } : v
           )
         );
         setEditVoucher(null);
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
-        });
       }
     } catch (error) {
       Swal.fire({
